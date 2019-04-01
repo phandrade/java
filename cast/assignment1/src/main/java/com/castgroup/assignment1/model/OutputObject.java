@@ -1,7 +1,11 @@
 package com.castgroup.assignment1.model;
 
-public class OutputObject {
+import java.io.Serializable;
 
+public class OutputObject implements Serializable {
+
+	private static final long serialVersionUID = 7726555731613868779L;
+	
 	private String erro;
 	private String mensagem;
 	private String data;
