@@ -14,13 +14,18 @@ import com.castgroup.assignment1.service.DiffService;
 @RequestMapping("/v1/diff/{id}")
 public class DiffController {
 	
+	private DiffService diffService;
+	
+	public DiffController() {
+		diffService = new DiffService();
+	}
+	
 	@RequestMapping(value = "/left", method = RequestMethod.POST, produces = "application/json")
 	public OutputObject diffLadoEsquerdo(@PathVariable String id, @RequestBody InputObject input) {
 		OutputObject resposta = new OutputObject();
-		DiffService service = new DiffService();
 		
 		if(input != null && input.getData() != null) {
-			service.gravarDadosDiff(resposta, id, input.getData(), null);
+			diffService.gravarDadosDiff(resposta, id, input.getData(), null);
 		} else {
 			resposta.setErro("Campos Obrigatórios");
 			resposta.setMensagem("Favor informar o campo data");
@@ -31,10 +36,9 @@ public class DiffController {
 	@RequestMapping(value = "/right", method = RequestMethod.POST, produces = "application/json")
 	public OutputObject diffLadoDireito(@PathVariable String id, @RequestBody InputObject input) {
 		OutputObject resposta = new OutputObject();
-		DiffService service = new DiffService();
 		
 		if(input != null && input.getData() != null) {
-			service.gravarDadosDiff(resposta, id, null, input.getData());
+			diffService.gravarDadosDiff(resposta, id, null, input.getData());
 		} else {
 			resposta.setErro("Campos Obrigatórios");
 			resposta.setMensagem("Favor informar o campo data");
@@ -46,9 +50,8 @@ public class DiffController {
 	public OutputObject compararDados(@PathVariable String id) {
 		
 		OutputObject resposta = new OutputObject();
-		DiffService service = new DiffService();		
 		
-		service.compararDados(resposta, id);
+		diffService.compararDados(resposta, id);
 		return resposta;		
 	}
 }

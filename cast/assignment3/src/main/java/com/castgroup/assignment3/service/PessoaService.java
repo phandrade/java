@@ -67,12 +67,16 @@ public class PessoaService {
 	
 	public MensagemRespostaPessoa removerPessoa(Long id) {
 		MensagemRespostaPessoa resposta = new MensagemRespostaPessoa();
-		Pessoa pessoaSelecionada = PessoaData.removerPessoa(id);
 		
 		if(id == null) {
 			resposta.setErro("Dados obrigatórios");
 			resposta.setMensagem("Favor informar o id da pessoa");
-		} else if(pessoaSelecionada == null) {
+			return resposta;
+		}
+		
+		Pessoa pessoaSelecionada = PessoaData.removerPessoa(id);
+		
+		if(pessoaSelecionada == null) {
 			resposta.setErro("Erro ao remover dados");
 			resposta.setMensagem("A pessoa não foi localizada ou não foi possível acessar os dados da pessoa");
 		} else {

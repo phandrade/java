@@ -186,7 +186,52 @@ public class Assignment3ApplicationTests {
 	@Test
 	public void testarRemoverPessoaSemId() {
 		
-		MensagemRespostaPessoa removerPessoa = pessoaService.removerPessoa(null);
+		MensagemRespostaPessoa respostaPessoa = pessoaService.removerPessoa(null);
+		
+		Assert.assertNull(respostaPessoa.getPessoaSelecionada());
+		Assert.assertEquals(respostaPessoa.getErro(), "Dados obrigatórios");
+		Assert.assertEquals(respostaPessoa.getMensagem(), "Favor informar o id da pessoa");
+	}
+	
+	@Test
+	public void testaRemoverPessoaSemBaseDeDados() {
+		
+		Pessoa pessoaCadastrada1 = criarPessoaTeste(1L);
+		Pessoa pessoaCadastrada2 = criarPessoaTeste(2L);
+		Pessoa pessoaCadastrada3 = criarPessoaTeste(3L);
+		
+		pessoaService.gravarPessoa(pessoaCadastrada1);
+		pessoaService.gravarPessoa(pessoaCadastrada2);
+		pessoaService.gravarPessoa(pessoaCadastrada3);
+		
+		PessoaData.anularDados();
+		
+		MensagemRespostaPessoa respostaPessoa = pessoaService.removerPessoa(pessoaCadastrada2.getId());
+		
+		Assert.assertNull(respostaPessoa.getPessoaSelecionada());
+		Assert.assertEquals(respostaPessoa.getErro(), "Erro ao remover dados");
+		Assert.assertEquals(respostaPessoa.getMensagem(), "A pessoa não foi localizada ou não foi possível acessar os dados da pessoa");
+		
+	}
+	
+	@Test
+	public void testarRemoverPessoaNaoCadastrada() {
+		
+		Pessoa pessoaCadastrada1 = criarPessoaTeste(1L);
+		Pessoa pessoaCadastrada2 = criarPessoaTeste(2L);
+		Pessoa pessoaCadastrada3 = criarPessoaTeste(3L);
+		
+		pessoaService.gravarPessoa(pessoaCadastrada1);
+		pessoaService.gravarPessoa(pessoaCadastrada2);
+		pessoaService.gravarPessoa(pessoaCadastrada3);
+		
+		MensagemRespostaPessoa respostaPessoa = pessoaService.removerPessoa(4L);
+		
+		Assert.assertNull(respostaPessoa.getPessoaSelecionada());
+		Assert.assertEquals(respostaPessoa.getErro(), "Erro ao remover dados");
+		Assert.assertEquals(respostaPessoa.getMensagem(), "A pessoa não foi localizada ou não foi possível acessar os dados da pessoa");
+		
+		
 	}
 	
 	private Pessoa criarPessoaTeste(Long id) {
