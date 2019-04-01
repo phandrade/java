@@ -121,7 +121,7 @@ public class Assignment3ApplicationTests {
 	}
 	
 	@Test
-	public void testarAdicionarPessoaSemDados() {
+	public void testarAdicionarAlterarPessoaSemDados() {
 		
 		MensagemRespostaPessoa respostaPessoa = pessoaService.gravarPessoa(null);
 		
@@ -131,7 +131,7 @@ public class Assignment3ApplicationTests {
 	}
 	
 	@Test
-	public void testarAdicionarPessoaSemBaseDados() {
+	public void testarAdicionarAlterarPessoaSemBaseDados() {
 		
 		PessoaData.anularDados();
 		MensagemRespostaPessoa respostaPessoa = pessoaService.gravarPessoa(criarPessoaTeste(1L));
@@ -139,6 +139,54 @@ public class Assignment3ApplicationTests {
 		Assert.assertNull(respostaPessoa.getPessoaSelecionada());
 		Assert.assertEquals(respostaPessoa.getErro(), "Erro ao gravar dados");
 		Assert.assertEquals(respostaPessoa.getMensagem(), "Erro ao tentar gravar as informações da pessoa");
+	}
+	
+	@Test
+	public void testarAlterarPessoaComSucesso() {
+		
+		Pessoa pessoaCadastrada1 = criarPessoaTeste(1L);
+		Pessoa pessoaCadastrada2 = criarPessoaTeste(2L);
+		Pessoa pessoaCadastrada3 = criarPessoaTeste(3L);
+		
+		pessoaService.gravarPessoa(pessoaCadastrada1);
+		pessoaService.gravarPessoa(pessoaCadastrada2);
+		pessoaService.gravarPessoa(pessoaCadastrada3);
+		
+		pessoaCadastrada2.setName("Fulano de tal");
+		
+		MensagemRespostaPessoa respostaPessoa = pessoaService.gravarPessoa(pessoaCadastrada2);
+		
+		Assert.assertNotNull(respostaPessoa.getPessoaSelecionada());
+		Assert.assertEquals(respostaPessoa.getPessoaSelecionada().getId(), pessoaCadastrada2.getId());
+		Assert.assertEquals(respostaPessoa.getPessoaSelecionada().getName(), "Fulano de tal");
+		Assert.assertNull(respostaPessoa.getErro());
+		Assert.assertEquals(respostaPessoa.getMensagem(), "Pessoa gravada");
+		
+	}
+	
+	@Test
+	public void testarRemoverPessoaComSucesso() {
+		
+		Pessoa pessoaCadastrada1 = criarPessoaTeste(1L);
+		Pessoa pessoaCadastrada2 = criarPessoaTeste(2L);
+		Pessoa pessoaCadastrada3 = criarPessoaTeste(3L);
+		
+		pessoaService.gravarPessoa(pessoaCadastrada1);
+		pessoaService.gravarPessoa(pessoaCadastrada2);
+		pessoaService.gravarPessoa(pessoaCadastrada3);
+		
+		MensagemRespostaPessoa respostaPessoa = pessoaService.removerPessoa(pessoaCadastrada2.getId());
+		
+		Assert.assertNotNull(respostaPessoa.getPessoaSelecionada());
+		Assert.assertEquals(respostaPessoa.getPessoaSelecionada().getId(), pessoaCadastrada2.getId());
+		Assert.assertNull(respostaPessoa.getErro());
+		Assert.assertEquals(respostaPessoa.getMensagem(), "Pessoa removida");
+	}
+	
+	@Test
+	public void testarRemoverPessoaSemId() {
+		
+		MensagemRespostaPessoa removerPessoa = pessoaService.removerPessoa(null);
 	}
 	
 	private Pessoa criarPessoaTeste(Long id) {

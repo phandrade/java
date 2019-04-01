@@ -46,12 +46,16 @@ public class PessoaService {
 	
 	public MensagemRespostaPessoa gravarPessoa(Pessoa pessoa) {
 		MensagemRespostaPessoa resposta = new MensagemRespostaPessoa();
-		Pessoa pessoaSelecionada = PessoaData.adicionarAlterarPessoa(pessoa);
 		
 		if(pessoa == null) {
 			resposta.setErro("Dados obrigatórios");
 			resposta.setMensagem("Favor informar os dados da pessoa");
-		} else if(pessoaSelecionada == null) {
+			return resposta;
+		}
+		
+		Pessoa pessoaSelecionada = PessoaData.adicionarAlterarPessoa(pessoa);
+		
+		if(pessoaSelecionada == null) {
 			resposta.setErro("Erro ao gravar dados");
 			resposta.setMensagem("Erro ao tentar gravar as informações da pessoa");
 		} else {
