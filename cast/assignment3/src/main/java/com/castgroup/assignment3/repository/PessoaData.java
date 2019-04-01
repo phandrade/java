@@ -13,6 +13,9 @@ public class PessoaData {
 	public static void inicializar() {		
 		pessoas = new HashMap<>();
 	}
+	public static void anularDados() {
+		pessoas = null;
+	}
 	
 	public static List<Pessoa> obterTodasPessoas() {
 		if(pessoas != null) {			
