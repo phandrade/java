@@ -4,23 +4,26 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.castgroup.assignment1.model.OutputObject;
 import com.castgroup.assignment1.repository.DiffData;
-import com.castgroup.assignment1.service.DiffService;
+import com.castgroup.assignment1.service.DiffServiceImpl;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DiffServiceTests {
 	
+	@Autowired
+	private DiffServiceImpl service;
+
 	private String[] diffLadoEsquerdoSomente;
 	private String[] diffLadoDireitoSomente;
 	private String[] diffLadosIguais;
 	private String[] diffLadosDiferentesMesmoTamanho;
 	private String[] diffLadosDiferentesTamanhoDiferente;
-	private DiffService service;
 	
 	@Before
 	public void inicializarAmbiente() {
@@ -30,7 +33,6 @@ public class DiffServiceTests {
 		diffLadosIguais = new String[]{"123123123", "123123123"};
 		diffLadosDiferentesMesmoTamanho = new String[]{"123123123", "121121121"};
 		diffLadosDiferentesTamanhoDiferente = new String[]{"1212121", "11111111111"};
-		service = new DiffService();
 	}
 	
 	@Test

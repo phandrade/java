@@ -1,5 +1,6 @@
 package com.castgroup.assignment3.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,17 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.castgroup.assignment3.model.MensagemRespostaPessoa;
 import com.castgroup.assignment3.model.Pessoa;
-import com.castgroup.assignment3.service.PessoaService;
+import com.castgroup.assignment3.service.PessoaServiceImpl;
 
 @RestController
 @RequestMapping("/rest")
 public class PessoaController {
 	
-	private PessoaService pessoaService;
-	
-	public PessoaController() {
-		pessoaService = new PessoaService();
-	}
+	@Autowired
+	private PessoaServiceImpl pessoaService;
 
 	@RequestMapping(value = "/pessoas", method = RequestMethod.GET, produces = "application/json")
 	public MensagemRespostaPessoa listarTodasPessoas() {

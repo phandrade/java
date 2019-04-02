@@ -4,24 +4,25 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.castgroup.assignment3.model.MensagemRespostaPessoa;
 import com.castgroup.assignment3.model.Pessoa;
 import com.castgroup.assignment3.repository.PessoaData;
-import com.castgroup.assignment3.service.PessoaService;
+import com.castgroup.assignment3.service.PessoaServiceImpl;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class PessoaServiceTests {
 	
-	private PessoaService pessoaService;
+	@Autowired
+	private PessoaServiceImpl pessoaService;
 
 	@Before
 	public void inicializarAmbiente() {		
 		PessoaData.inicializar();
-		pessoaService = new PessoaService();
 	}
 	
 	@Test
