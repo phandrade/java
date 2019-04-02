@@ -142,6 +142,25 @@ public class PessoaServiceTests {
 	}
 	
 	@Test
+	public void testarAdicionarAlterarPessoaSemNome() {
+		
+		Pessoa pessoaTeste = new Pessoa();
+		MensagemRespostaPessoa respostaPessoa = pessoaService.gravarPessoa(pessoaTeste);
+		
+		Assert.assertNull(respostaPessoa.getPessoaSelecionada());
+		Assert.assertEquals(respostaPessoa.getErro(), "Dados obrigatórios");
+		Assert.assertEquals(respostaPessoa.getMensagem(), "Favor informar os dados da pessoa");
+		
+		pessoaTeste.setId(1L);
+		
+		respostaPessoa = pessoaService.gravarPessoa(pessoaTeste);
+		
+		Assert.assertNull(respostaPessoa.getPessoaSelecionada());
+		Assert.assertEquals(respostaPessoa.getErro(), "Dados obrigatórios");
+		Assert.assertEquals(respostaPessoa.getMensagem(), "Favor informar os dados da pessoa");
+	}
+	
+	@Test
 	public void testarAlterarPessoaComSucesso() {
 		
 		Pessoa pessoaCadastrada1 = criarPessoaTeste(1L);

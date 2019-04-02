@@ -47,7 +47,7 @@ public class PessoaService {
 	public MensagemRespostaPessoa gravarPessoa(Pessoa pessoa) {
 		MensagemRespostaPessoa resposta = new MensagemRespostaPessoa();
 		
-		if(pessoa == null) {
+		if(pessoa == null || pessoa.getName() == null) {
 			resposta.setErro("Dados obrigatórios");
 			resposta.setMensagem("Favor informar os dados da pessoa");
 			return resposta;
