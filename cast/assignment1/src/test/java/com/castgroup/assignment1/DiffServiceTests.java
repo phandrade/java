@@ -13,7 +13,7 @@ import com.castgroup.assignment1.service.DiffService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Assignment1ApplicationTests {
+public class DiffServiceTests {
 	
 	private String[] diffLadoEsquerdoSomente;
 	private String[] diffLadoDireitoSomente;

@@ -14,7 +14,7 @@ import com.castgroup.assignment3.service.PessoaService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Assignment3ApplicationTests {
+public class PessoaServiceTests {
 	
 	private PessoaService pessoaService;
 
