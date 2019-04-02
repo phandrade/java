@@ -2,7 +2,7 @@ package com.castgroup.assignment3.model;
 
 import java.io.Serializable;
 
-public class Pessoa implements Serializable {
+public class PessoaDTO implements Serializable {
 	
 	private static final long serialVersionUID = -4043415630555789814L;
 	

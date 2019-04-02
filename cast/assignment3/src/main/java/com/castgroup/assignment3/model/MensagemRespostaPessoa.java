@@ -9,8 +9,8 @@ public class MensagemRespostaPessoa implements Serializable {
 	
 	private String erro;
 	private String mensagem;
-	private Pessoa pessoaSelecionada;
-	private List<Pessoa> listaTodasPessoas;
+	private PessoaDTO pessoaSelecionada;
+	private List<PessoaDTO> listaTodasPessoas;
 	
 	public String getErro() {
 		return erro;
@@ -24,16 +24,16 @@ public class MensagemRespostaPessoa implements Serializable {
 	public void setMensagem(String mensagem) {
 		this.mensagem = mensagem;
 	}	
-	public List<Pessoa> getListaTodasPessoas() {
+	public List<PessoaDTO> getListaTodasPessoas() {
 		return listaTodasPessoas;
 	}
-	public void setListaTodasPessoas(List<Pessoa> listaTodasPessoas) {
+	public void setListaTodasPessoas(List<PessoaDTO> listaTodasPessoas) {
 		this.listaTodasPessoas = listaTodasPessoas;
 	}
-	public Pessoa getPessoaSelecionada() {
+	public PessoaDTO getPessoaSelecionada() {
 		return pessoaSelecionada;
 	}
-	public void setPessoaSelecionada(Pessoa pessoaSelecionada) {
+	public void setPessoaSelecionada(PessoaDTO pessoaSelecionada) {
 		this.pessoaSelecionada = pessoaSelecionada;
 	}	
 }

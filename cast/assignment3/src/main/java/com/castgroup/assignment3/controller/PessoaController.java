@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.castgroup.assignment3.model.MensagemRespostaPessoa;
-import com.castgroup.assignment3.model.Pessoa;
+import com.castgroup.assignment3.model.PessoaDTO;
 import com.castgroup.assignment3.service.PessoaServiceImpl;
 
 @RestController
@@ -29,7 +29,7 @@ public class PessoaController {
 	}
 	
 	@RequestMapping(value = "/pessoa/save", method = RequestMethod.POST, produces = "application/json")
-	public MensagemRespostaPessoa gravarPessoa(@RequestBody Pessoa pessoa) {
+	public MensagemRespostaPessoa gravarPessoa(@RequestBody PessoaDTO pessoa) {
 		return pessoaService.gravarPessoa(pessoa);
 	}
 	

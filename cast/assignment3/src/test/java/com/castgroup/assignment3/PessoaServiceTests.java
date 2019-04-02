@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.castgroup.assignment3.model.MensagemRespostaPessoa;
-import com.castgroup.assignment3.model.Pessoa;
+import com.castgroup.assignment3.model.PessoaDTO;
 import com.castgroup.assignment3.repository.PessoaData;
 import com.castgroup.assignment3.service.PessoaServiceImpl;
 
@@ -28,9 +28,9 @@ public class PessoaServiceTests {
 	@Test
 	public void testarBuscarTodasPessoasComSucesso() {
 		
-		Pessoa pessoaCadastrada1 = criarPessoaTeste(1L);
-		Pessoa pessoaCadastrada2 = criarPessoaTeste(2L);
-		Pessoa pessoaCadastrada3 = criarPessoaTeste(3L);
+		PessoaDTO pessoaCadastrada1 = criarPessoaTeste(1L);
+		PessoaDTO pessoaCadastrada2 = criarPessoaTeste(2L);
+		PessoaDTO pessoaCadastrada3 = criarPessoaTeste(3L);
 		
 		pessoaService.gravarPessoa(pessoaCadastrada1);
 		pessoaService.gravarPessoa(pessoaCadastrada2);
@@ -57,9 +57,9 @@ public class PessoaServiceTests {
 	@Test
 	public void testarBuscarPessoaPorIdComSucesso() {
 		
-		Pessoa pessoaCadastrada1 = criarPessoaTeste(1L);
-		Pessoa pessoaCadastrada2 = criarPessoaTeste(2L);
-		Pessoa pessoaCadastrada3 = criarPessoaTeste(3L);
+		PessoaDTO pessoaCadastrada1 = criarPessoaTeste(1L);
+		PessoaDTO pessoaCadastrada2 = criarPessoaTeste(2L);
+		PessoaDTO pessoaCadastrada3 = criarPessoaTeste(3L);
 		
 		pessoaService.gravarPessoa(pessoaCadastrada1);
 		pessoaService.gravarPessoa(pessoaCadastrada2);
@@ -76,9 +76,9 @@ public class PessoaServiceTests {
 	@Test
 	public void testarBuscarPessoaSemId() {
 		
-		Pessoa pessoaCadastrada1 = criarPessoaTeste(1L);
-		Pessoa pessoaCadastrada2 = criarPessoaTeste(2L);
-		Pessoa pessoaCadastrada3 = criarPessoaTeste(3L);
+		PessoaDTO pessoaCadastrada1 = criarPessoaTeste(1L);
+		PessoaDTO pessoaCadastrada2 = criarPessoaTeste(2L);
+		PessoaDTO pessoaCadastrada3 = criarPessoaTeste(3L);
 		
 		pessoaService.gravarPessoa(pessoaCadastrada1);
 		pessoaService.gravarPessoa(pessoaCadastrada2);
@@ -94,9 +94,9 @@ public class PessoaServiceTests {
 	@Test
 	public void testarBuscarPessoaComIdSemCadastro() {
 		
-		Pessoa pessoaCadastrada1 = criarPessoaTeste(1L);
-		Pessoa pessoaCadastrada2 = criarPessoaTeste(2L);
-		Pessoa pessoaCadastrada3 = criarPessoaTeste(3L);
+		PessoaDTO pessoaCadastrada1 = criarPessoaTeste(1L);
+		PessoaDTO pessoaCadastrada2 = criarPessoaTeste(2L);
+		PessoaDTO pessoaCadastrada3 = criarPessoaTeste(3L);
 		
 		pessoaService.gravarPessoa(pessoaCadastrada1);
 		pessoaService.gravarPessoa(pessoaCadastrada2);
@@ -112,7 +112,7 @@ public class PessoaServiceTests {
 	@Test
 	public void testarAdicionarPessoaComSucesso() {
 		
-		Pessoa pessoaCadastrada1 = criarPessoaTeste(1L);
+		PessoaDTO pessoaCadastrada1 = criarPessoaTeste(1L);
 		MensagemRespostaPessoa respostaPessoa = pessoaService.gravarPessoa(pessoaCadastrada1);
 		
 		Assert.assertNotNull(respostaPessoa.getPessoaSelecionada());
@@ -145,7 +145,7 @@ public class PessoaServiceTests {
 	@Test
 	public void testarAdicionarAlterarPessoaSemNome() {
 		
-		Pessoa pessoaTeste = new Pessoa();
+		PessoaDTO pessoaTeste = new PessoaDTO();
 		MensagemRespostaPessoa respostaPessoa = pessoaService.gravarPessoa(pessoaTeste);
 		
 		Assert.assertNull(respostaPessoa.getPessoaSelecionada());
@@ -164,9 +164,9 @@ public class PessoaServiceTests {
 	@Test
 	public void testarAlterarPessoaComSucesso() {
 		
-		Pessoa pessoaCadastrada1 = criarPessoaTeste(1L);
-		Pessoa pessoaCadastrada2 = criarPessoaTeste(2L);
-		Pessoa pessoaCadastrada3 = criarPessoaTeste(3L);
+		PessoaDTO pessoaCadastrada1 = criarPessoaTeste(1L);
+		PessoaDTO pessoaCadastrada2 = criarPessoaTeste(2L);
+		PessoaDTO pessoaCadastrada3 = criarPessoaTeste(3L);
 		
 		pessoaService.gravarPessoa(pessoaCadastrada1);
 		pessoaService.gravarPessoa(pessoaCadastrada2);
@@ -187,9 +187,9 @@ public class PessoaServiceTests {
 	@Test
 	public void testarRemoverPessoaComSucesso() {
 		
-		Pessoa pessoaCadastrada1 = criarPessoaTeste(1L);
-		Pessoa pessoaCadastrada2 = criarPessoaTeste(2L);
-		Pessoa pessoaCadastrada3 = criarPessoaTeste(3L);
+		PessoaDTO pessoaCadastrada1 = criarPessoaTeste(1L);
+		PessoaDTO pessoaCadastrada2 = criarPessoaTeste(2L);
+		PessoaDTO pessoaCadastrada3 = criarPessoaTeste(3L);
 		
 		pessoaService.gravarPessoa(pessoaCadastrada1);
 		pessoaService.gravarPessoa(pessoaCadastrada2);
@@ -216,9 +216,9 @@ public class PessoaServiceTests {
 	@Test
 	public void testaRemoverPessoaSemBaseDeDados() {
 		
-		Pessoa pessoaCadastrada1 = criarPessoaTeste(1L);
-		Pessoa pessoaCadastrada2 = criarPessoaTeste(2L);
-		Pessoa pessoaCadastrada3 = criarPessoaTeste(3L);
+		PessoaDTO pessoaCadastrada1 = criarPessoaTeste(1L);
+		PessoaDTO pessoaCadastrada2 = criarPessoaTeste(2L);
+		PessoaDTO pessoaCadastrada3 = criarPessoaTeste(3L);
 		
 		pessoaService.gravarPessoa(pessoaCadastrada1);
 		pessoaService.gravarPessoa(pessoaCadastrada2);
@@ -237,9 +237,9 @@ public class PessoaServiceTests {
 	@Test
 	public void testarRemoverPessoaNaoCadastrada() {
 		
-		Pessoa pessoaCadastrada1 = criarPessoaTeste(1L);
-		Pessoa pessoaCadastrada2 = criarPessoaTeste(2L);
-		Pessoa pessoaCadastrada3 = criarPessoaTeste(3L);
+		PessoaDTO pessoaCadastrada1 = criarPessoaTeste(1L);
+		PessoaDTO pessoaCadastrada2 = criarPessoaTeste(2L);
+		PessoaDTO pessoaCadastrada3 = criarPessoaTeste(3L);
 		
 		pessoaService.gravarPessoa(pessoaCadastrada1);
 		pessoaService.gravarPessoa(pessoaCadastrada2);
@@ -254,9 +254,9 @@ public class PessoaServiceTests {
 		
 	}
 	
-	private Pessoa criarPessoaTeste(Long id) {
+	private PessoaDTO criarPessoaTeste(Long id) {
 		
-		Pessoa pessoaTeste = new Pessoa();
+		PessoaDTO pessoaTeste = new PessoaDTO();
 		pessoaTeste.setId(id);
 		pessoaTeste.setCellPhone(id.intValue());
 		pessoaTeste.setCity("Cidade " + id);

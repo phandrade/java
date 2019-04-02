@@ -2,9 +2,44 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Gestão de Pessoas</title>
 </head>
-<body>
-Hello World!
-</body>
+<body ng-app="pessoa"></body>
+<hr/>
+<div class="container" ng-controller="PessoaController">
+	<table class="table">
+	  <thead>
+	    <tr>
+	      <th scope="col">id</th>
+	      <th scope="col">name</th>
+	      <th scope="col">street</th>
+	      <th scope="col">number</th>
+	      <th scope="col">neighborhood</th>
+	      <th scope="col">city</th>
+	      <th scope="col">state</th>
+	      <th scope="col">cellPhone</th>
+	      <th scope="col">phone</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+		  <tr ng-repeat="pessoa in listaTodasPessoas">
+	    	<td>{{ pessoa.id }}</td>
+		    <td>{{ pessoa.name }}</td>
+		    <td>{{ pessoa.street }}</td>
+		    <td>{{ pessoa.number }}</td>
+		    <td>{{ pessoa.neighborhood }}</td>
+		    <td>{{ pessoa.city }}</td>
+		    <td>{{ pessoa.state }}</td>
+		    <td>{{ pessoa.cellPhone }}</td>
+		    <td>{{ pessoa.phone }}</td>
+		  </tr>	  
+	  </tbody>
+	</table>
+</div>
+<script src="../js/lib/angular.min.js"></script>
+<script src="../js/app/app.js"></script>
+<script src="../js/app/PessoaController.js"></script>
+<script src="../js/app/PessoaService.js"></script>
+<link rel="stylesheet" href="../css/lib/bootstrap.min.css"/>
+<link rel="stylesheet" href="../css/app/app.css"/>
 </html>

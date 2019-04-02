@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.castgroup.assignment3.model.Pessoa;
+import com.castgroup.assignment3.model.PessoaDTO;
 
 public class PessoaData {
 
-	private static HashMap<Long, Pessoa> pessoas;
+	private static HashMap<Long, PessoaDTO> pessoas;
 	
 	public static void inicializar() {		
 		pessoas = new HashMap<>();
@@ -17,14 +17,14 @@ public class PessoaData {
 		pessoas = null;
 	}
 	
-	public static List<Pessoa> obterTodasPessoas() {
+	public static List<PessoaDTO> obterTodasPessoas() {
 		if(pessoas != null) {			
 			return pessoas.values().stream().collect(Collectors.toList());
 		}
 		return null;
 	}
 	
-	public static Pessoa obterPessoaPorId(Long id) {
+	public static PessoaDTO obterPessoaPorId(Long id) {
 		
 		if(pessoas != null && pessoas.containsKey(id)) {
 			return pessoas.get(id);
@@ -32,7 +32,7 @@ public class PessoaData {
 		return null;
 	}
 	
-	public static Pessoa adicionarAlterarPessoa(Pessoa pessoa) {
+	public static PessoaDTO adicionarAlterarPessoa(PessoaDTO pessoa) {
 		
 		if(pessoas != null) {
 			
@@ -47,7 +47,7 @@ public class PessoaData {
 		return null;
 	}
 	
-	public static Pessoa removerPessoa(Long id) {
+	public static PessoaDTO removerPessoa(Long id) {
 		if(pessoas != null && pessoas.containsKey(id)) {
 			return pessoas.remove(id);			
 		}

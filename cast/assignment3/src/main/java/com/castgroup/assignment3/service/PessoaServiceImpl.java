@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.castgroup.assignment3.model.MensagemRespostaPessoa;
-import com.castgroup.assignment3.model.Pessoa;
+import com.castgroup.assignment3.model.PessoaDTO;
 import com.castgroup.assignment3.repository.PessoaData;
 
 @Service
@@ -14,7 +14,7 @@ public class PessoaServiceImpl implements PessoaService {
 	public MensagemRespostaPessoa listarTodasPessoas() {
 		
 		MensagemRespostaPessoa resposta = new MensagemRespostaPessoa();
-		List<Pessoa> listaTodasPessoas = PessoaData.obterTodasPessoas();
+		List<PessoaDTO> listaTodasPessoas = PessoaData.obterTodasPessoas();
 		
 		if(listaTodasPessoas == null) {
 			resposta.setErro("Erro ao acessar dados");
@@ -30,7 +30,7 @@ public class PessoaServiceImpl implements PessoaService {
 	public MensagemRespostaPessoa buscarPessoaPorId(Long id) {		
 		
 		MensagemRespostaPessoa resposta = new MensagemRespostaPessoa();
-		Pessoa pessoaSelecionada = PessoaData.obterPessoaPorId(id);
+		PessoaDTO pessoaSelecionada = PessoaData.obterPessoaPorId(id);
 		
 		if(id == null) {
 			resposta.setErro("Dados obrigatórios");
@@ -47,7 +47,7 @@ public class PessoaServiceImpl implements PessoaService {
 		
 	}
 	
-	public MensagemRespostaPessoa gravarPessoa(Pessoa pessoa) {
+	public MensagemRespostaPessoa gravarPessoa(PessoaDTO pessoa) {
 		MensagemRespostaPessoa resposta = new MensagemRespostaPessoa();
 		
 		if(pessoa == null || pessoa.getName() == null) {
@@ -56,7 +56,7 @@ public class PessoaServiceImpl implements PessoaService {
 			return resposta;
 		}
 		
-		Pessoa pessoaSelecionada = PessoaData.adicionarAlterarPessoa(pessoa);
+		PessoaDTO pessoaSelecionada = PessoaData.adicionarAlterarPessoa(pessoa);
 		
 		if(pessoaSelecionada == null) {
 			resposta.setErro("Erro ao gravar dados");
@@ -77,7 +77,7 @@ public class PessoaServiceImpl implements PessoaService {
 			return resposta;
 		}
 		
-		Pessoa pessoaSelecionada = PessoaData.removerPessoa(id);
+		PessoaDTO pessoaSelecionada = PessoaData.removerPessoa(id);
 		
 		if(pessoaSelecionada == null) {
 			resposta.setErro("Erro ao remover dados");
