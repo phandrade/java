@@ -40,6 +40,7 @@ public class PessoaServiceImpl implements PessoaService {
 			resposta.setMensagem("Não foi localizada nenhuma Pessoa com o Id informado");
 		} else {
 			resposta.setPessoaSelecionada(pessoaSelecionada);
+			resposta.setListaTodasPessoas(PessoaData.obterTodasPessoas());
 			resposta.setMensagem("Pessoa localizada");
 		}
 		
@@ -63,6 +64,7 @@ public class PessoaServiceImpl implements PessoaService {
 			resposta.setMensagem("Erro ao tentar gravar as informações da pessoa");
 		} else {
 			resposta.setPessoaSelecionada(pessoaSelecionada);
+			resposta.setListaTodasPessoas(PessoaData.obterTodasPessoas());
 			resposta.setMensagem("Pessoa gravada");
 		}
 		return resposta;
@@ -84,6 +86,7 @@ public class PessoaServiceImpl implements PessoaService {
 			resposta.setMensagem("A pessoa não foi localizada ou não foi possível acessar os dados da pessoa");
 		} else {
 			resposta.setPessoaSelecionada(pessoaSelecionada);
+			resposta.setListaTodasPessoas(PessoaData.obterTodasPessoas());
 			resposta.setMensagem("Pessoa removida");
 		}
 		

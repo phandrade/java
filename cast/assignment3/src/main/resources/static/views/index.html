@@ -4,41 +4,108 @@
 <meta charset="UTF-8">
 <title>Gestão de Pessoas</title>
 </head>
-<body ng-app="pessoa"></body>
-<hr/>
-<div class="container" ng-controller="PessoaController">
-	<table class="table">
-	  <thead>
-	    <tr>
-	      <th scope="col">id</th>
-	      <th scope="col">name</th>
-	      <th scope="col">street</th>
-	      <th scope="col">number</th>
-	      <th scope="col">neighborhood</th>
-	      <th scope="col">city</th>
-	      <th scope="col">state</th>
-	      <th scope="col">cellPhone</th>
-	      <th scope="col">phone</th>
-	    </tr>
-	  </thead>
-	  <tbody>
-		  <tr ng-repeat="pessoa in listaTodasPessoas">
-	    	<td>{{ pessoa.id }}</td>
-		    <td>{{ pessoa.name }}</td>
-		    <td>{{ pessoa.street }}</td>
-		    <td>{{ pessoa.number }}</td>
-		    <td>{{ pessoa.neighborhood }}</td>
-		    <td>{{ pessoa.city }}</td>
-		    <td>{{ pessoa.state }}</td>
-		    <td>{{ pessoa.cellPhone }}</td>
-		    <td>{{ pessoa.phone }}</td>
-		  </tr>	  
-	  </tbody>
-	</table>
-</div>
+<body ng-app="pessoa">
+	<div class="container" ng-controller="PessoaController">			
+		<fieldset>
+			<legend>Pesquisa por Id</legend>
+			<form>
+	  			<div class="form-row">
+	  				<div class="col-3">
+	  					<input type="number" class="form-control" placeholder="Id" ng-model="idPessoaBusca">
+	  				</div>
+	  				<div class="col-3">
+	  					<button class="btn btn-primary" ng-click="buscarPessoaPorId()">Pesquisar</button>
+	  				</div>
+	  			</div>
+	  		</form>
+	  	</fieldset>
+	  	<fieldset>
+	  		<legend>Dados para inclusão ou alteração</legend>
+	  			<form>
+	  				<div class="form-row form-margin-bottom">
+						<div class="col-3">
+							<input type="text" class="form-control" placeholder="Id" ng-model="pessoaSelecionada.id" disabled>
+						</div>
+						<div class="col-9">
+							<input type="text" class="form-control" placeholder="Name" ng-model="pessoaSelecionada.name">
+						</div>
+					</div>
+					<div class="form-row form-margin-bottom">
+						<div class="col-9">
+							<input type="text" class="form-control" placeholder="Street" ng-model="pessoaSelecionada.street">
+						</div>
+						<div class="col-3">
+							<input type="text" class="form-control" placeholder="Number" ng-model="pessoaSelecionada.number">
+						</div>
+					</div>
+					<div class="form-row form-margin-bottom">
+						<div class="col-5">
+							<input type="text" class="form-control" placeholder="Neighborhood" ng-model="pessoaSelecionada.neighborhood">
+						</div>
+						<div class="col-3">
+							<input type="text" class="form-control" placeholder="City" ng-model="pessoaSelecionada.city">
+						</div>
+						<div class="col-3">
+							<input type="text" class="form-control" placeholder="State" ng-model="pessoaSelecionada.state">
+						</div>
+					</div>
+					<div class="form-row form-margin-bottom">
+						<div class="col-3">
+							<input type="text" class="form-control" placeholder="Phone" ng-model="pessoaSelecionada.phone">
+						</div>
+						<div class="col-3">
+							<input type="text" class="form-control" placeholder="Cellphone" ng-model="pessoaSelecionada.cellphone">
+						</div>
+					</div>
+					<div class="form-row form-margin-bottom">
+						<div class="col-5">
+		  					<button class="btn btn-primary" ng-click="gravarPessoa()">Salvar</button>
+		  					<button class="btn btn-danger" ng-click="removerPessoa()">Excluir</button>
+		  					<button class="btn btn-info" ng-click="limparDados()">Limpar Dados</button>
+		  				</div>
+					</div>
+	  			</form>
+		</fieldset>
+		<fieldset>
+			<legend>Lista de Pessoas</legend>
+			<table class="table">
+			  <thead>
+			    <tr>
+			      <th scope="col">id</th>
+			      <th scope="col">name</th>
+			      <th scope="col">street</th>
+			      <th scope="col">number</th>
+			      <th scope="col">neighborhood</th>
+			      <th scope="col">city</th>
+			      <th scope="col">state</th>
+			      <th scope="col">cellphone</th>
+			      <th scope="col">phone</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+				  <tr ng-repeat="pessoa in listaTodasPessoas">
+			    	<td>{{ pessoa.id }}</td>
+				    <td>{{ pessoa.name }}</td>
+				    <td>{{ pessoa.street }}</td>
+				    <td>{{ pessoa.number }}</td>
+				    <td>{{ pessoa.neighborhood }}</td>
+				    <td>{{ pessoa.city }}</td>
+				    <td>{{ pessoa.state }}</td>
+				    <td>{{ pessoa.cellphone }}</td>
+				    <td>{{ pessoa.phone }}</td>
+				  </tr>	  
+			  </tbody>
+			</table>
+		</fieldset>
+		<div class="alert alert-primary" role="alert" id="mensagemInformativa">
+		  {{ mensagemInformativa }}
+		</div>
+	</div>
+</body>
 <script src="../js/lib/angular.min.js"></script>
 <script src="../js/app/app.js"></script>
 <script src="../js/app/PessoaController.js"></script>
 <script src="../js/app/PessoaService.js"></script>
 <link rel="stylesheet" href="../css/lib/bootstrap.min.css"/>
+<link rel="stylesheet" href="../css/app/pessoa.css"/>
 </html>

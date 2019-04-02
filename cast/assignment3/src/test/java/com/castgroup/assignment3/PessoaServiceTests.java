@@ -69,6 +69,7 @@ public class PessoaServiceTests {
 		
 		Assert.assertNull(respostaPessoa.getErro());
 		Assert.assertNotNull(respostaPessoa.getPessoaSelecionada());
+		Assert.assertNotNull(respostaPessoa.getListaTodasPessoas());
 		Assert.assertEquals(respostaPessoa.getPessoaSelecionada().getId().longValue(), 2);
 		Assert.assertEquals(respostaPessoa.getMensagem(), "Pessoa localizada");		
 	}
@@ -116,6 +117,7 @@ public class PessoaServiceTests {
 		MensagemRespostaPessoa respostaPessoa = pessoaService.gravarPessoa(pessoaCadastrada1);
 		
 		Assert.assertNotNull(respostaPessoa.getPessoaSelecionada());
+		Assert.assertNotNull(respostaPessoa.getListaTodasPessoas());
 		Assert.assertNull(respostaPessoa.getErro());
 		Assert.assertEquals(respostaPessoa.getMensagem(), "Pessoa gravada");
 		
@@ -177,6 +179,7 @@ public class PessoaServiceTests {
 		MensagemRespostaPessoa respostaPessoa = pessoaService.gravarPessoa(pessoaCadastrada2);
 		
 		Assert.assertNotNull(respostaPessoa.getPessoaSelecionada());
+		Assert.assertNotNull(respostaPessoa.getListaTodasPessoas());
 		Assert.assertEquals(respostaPessoa.getPessoaSelecionada().getId(), pessoaCadastrada2.getId());
 		Assert.assertEquals(respostaPessoa.getPessoaSelecionada().getName(), "Fulano de tal");
 		Assert.assertNull(respostaPessoa.getErro());
@@ -198,6 +201,7 @@ public class PessoaServiceTests {
 		MensagemRespostaPessoa respostaPessoa = pessoaService.removerPessoa(pessoaCadastrada2.getId());
 		
 		Assert.assertNotNull(respostaPessoa.getPessoaSelecionada());
+		Assert.assertNotNull(respostaPessoa.getListaTodasPessoas());
 		Assert.assertEquals(respostaPessoa.getPessoaSelecionada().getId(), pessoaCadastrada2.getId());
 		Assert.assertNull(respostaPessoa.getErro());
 		Assert.assertEquals(respostaPessoa.getMensagem(), "Pessoa removida");
@@ -258,7 +262,7 @@ public class PessoaServiceTests {
 		
 		PessoaDTO pessoaTeste = new PessoaDTO();
 		pessoaTeste.setId(id);
-		pessoaTeste.setCellPhone(id.intValue());
+		pessoaTeste.setCellphone(id.intValue());
 		pessoaTeste.setCity("Cidade " + id);
 		pessoaTeste.setName("Nome " + id);
 		pessoaTeste.setNeighborhood("Bairro " + id);

@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+fieldset {
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+.form-margin-bottom {
+	margin-bottom: 10px;
+}

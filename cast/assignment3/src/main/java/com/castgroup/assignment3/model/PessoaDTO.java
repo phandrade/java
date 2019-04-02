@@ -13,7 +13,7 @@ public class PessoaDTO implements Serializable {
 	private String neighborhood;
 	private String city;
 	private String state;
-	private Integer cellPhone;
+	private Integer cellphone;
 	private Integer phone;
 	
 	public Long getId() {
@@ -58,11 +58,11 @@ public class PessoaDTO implements Serializable {
 	public void setState(String state) {
 		this.state = state;
 	}
-	public Integer getCellPhone() {
-		return cellPhone;
+	public Integer getCellphone() {
+		return cellphone;
 	}
-	public void setCellPhone(Integer cellPhone) {
-		this.cellPhone = cellPhone;
+	public void setCellphone(Integer cellphone) {
+		this.cellphone = cellphone;
 	}
 	public Integer getPhone() {
 		return phone;
