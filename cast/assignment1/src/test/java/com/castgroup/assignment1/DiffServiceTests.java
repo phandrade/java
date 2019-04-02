@@ -10,14 +10,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.castgroup.assignment1.model.OutputObject;
 import com.castgroup.assignment1.repository.DiffData;
-import com.castgroup.assignment1.service.DiffServiceImpl;
+import com.castgroup.assignment1.service.DiffService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DiffServiceTests {
 	
 	@Autowired
-	private DiffServiceImpl service;
+	private DiffService service;
 
 	private String[] diffLadoEsquerdoSomente;
 	private String[] diffLadoDireitoSomente;

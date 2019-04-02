@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.castgroup.assignment1.model.InputObject;
 import com.castgroup.assignment1.model.OutputObject;
-import com.castgroup.assignment1.service.DiffServiceImpl;
+import com.castgroup.assignment1.service.DiffService;
 
 @RestController
 @RequestMapping("/v1/diff/{id}")
 public class DiffController {
 	
 	@Autowired
-	private DiffServiceImpl diffService;
+	private DiffService diffService;
 	
 	@RequestMapping(value = "/left", method = RequestMethod.POST, produces = "application/json")
 	public OutputObject diffLadoEsquerdo(@PathVariable String id, @RequestBody InputObject input) {

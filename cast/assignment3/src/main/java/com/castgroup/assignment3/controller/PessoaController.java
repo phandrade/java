@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.castgroup.assignment3.model.MensagemRespostaPessoa;
 import com.castgroup.assignment3.model.PessoaDTO;
-import com.castgroup.assignment3.service.PessoaServiceImpl;
+import com.castgroup.assignment3.service.PessoaService;
 
 @RestController
 @RequestMapping("/rest")
 public class PessoaController {
 	
 	@Autowired
-	private PessoaServiceImpl pessoaService;
+	private PessoaService pessoaService;
 
 	@RequestMapping(value = "/pessoas", method = RequestMethod.GET, produces = "application/json")
 	public MensagemRespostaPessoa listarTodasPessoas() {

@@ -11,14 +11,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.castgroup.assignment3.model.MensagemRespostaPessoa;
 import com.castgroup.assignment3.model.PessoaDTO;
 import com.castgroup.assignment3.repository.PessoaData;
-import com.castgroup.assignment3.service.PessoaServiceImpl;
+import com.castgroup.assignment3.service.PessoaService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class PessoaServiceTests {
 	
 	@Autowired
-	private PessoaServiceImpl pessoaService;
+	private PessoaService pessoaService;
 
 	@Before
 	public void inicializarAmbiente() {		
